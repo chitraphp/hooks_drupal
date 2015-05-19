@@ -1,0 +1,5 @@
+name = Groceries
+description = List out groceries and display total prices
+package = Epicodus Examples
+core = 7.x
+files[] = groceries.module

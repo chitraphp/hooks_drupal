@@ -1,0 +1,42 @@
+<?php
+
+    function groceries_menu() {
+        $items = array();
+        $items['groceries_list'] = array(
+            'title' => 'Grocery List',
+            'page callback' => 'grocery_list',
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM,
+        );
+        return $items;
+    }
+
+
+    function grocery_list() {
+        $list = array();
+
+        $list['eggs'] = array(
+            'price' => 1.99,
+            'quantity' => 2,
+        );
+        $list['cucumbers'] = array(
+            'price' => 0.79,
+            'quantity' => 3,
+        );
+        $list['yogurt'] = array(
+            'price' => 1.49,
+            'quantity' => 4,
+        );
+
+        $output = '<ul>';
+        $total = 0;
+
+        foreach($list as $key=>$value) {
+            $output .= "<li>$key: " . $value['quantity'] . " at " . $value['price'] . " each:</li>";
+            $output .= "<li>" . ($value['price'] * $value['quantity']) . "</li>";
+            $total = $total + ($value['price'] * $value['quantity']);
+        };
+
+        $output .= "</ul><p>Total: $total</p>";
+        return $output;
+    }
